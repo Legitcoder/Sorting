@@ -50,7 +50,7 @@ def quick_sort( arr, low, high ):
         quick_sort(arr, low, index-1)
         quick_sort(arr, index+1, high)
         return arr
-    return []
+    if not arr: return []
 
 def partition(arr, low, high):
     pivot = arr[low]

@@ -1,3 +1,4 @@
+import random
 ### helper function
 def merge( arrA, arrB ):
     elements = len( arrA ) + len( arrB )
@@ -44,8 +45,29 @@ def merge_sort_in_place(arr, l, r):
 
 # TO-DO: implement the Quick Sort function below USING RECURSION
 def quick_sort( arr, low, high ):
+    if low < high:
+        index = partition(arr, low, high)
+        quick_sort(arr, low, index-1)
+        quick_sort(arr, index+1, high)
+        return arr
+    return []
 
-    return arr
+def partition(arr, low, high):
+    pivot = arr[low]
+    left = low + 1
+    right = high
+    while True:
+        while left <= right and arr[left] <= pivot:
+            left += 1
+        while left <= right and arr[right] >= pivot:
+            right -= 1
+        if right < left:
+            break
+        else:
+            arr[left], arr[right] = arr[right], arr[left]
+
+    arr[low], arr[right] = arr[right], arr[low]
+    return right
 
 
 # STRETCH: implement the Timsort function below
